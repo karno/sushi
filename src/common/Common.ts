@@ -15,3 +15,11 @@ export async function FetchSushiInfo(): Promise<SushiInfo[]> {
         }))
 
 }
+
+export async function Timeout(msec: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, msec));
+}
+
+export function SelectRandom<T>(list: T[]): T {
+    return list[Math.floor(Math.random() * list.length)]
+}
