@@ -7,6 +7,7 @@ interface SushiSingleSlotProps {
     sushies: SushiInfo[],
     sushi: SushiInfo,
     delay: number,
+    delayEnabled: boolean,
 }
 
 const SushiSingleSlot: React.FC<SushiSingleSlotProps> = props => {
@@ -22,15 +23,12 @@ const SushiSingleSlot: React.FC<SushiSingleSlotProps> = props => {
         // fetch menu
         (async () => {
             // awaiting other slots
-            for (let _ of [...Array(props.delay * 30 + 10)]) {
+            const delay = props.delayEnabled ? (props.delay + 1) : 1;
+            for (let _ of [...Array(delay * 40 + 10)]) {
                 await Timeout(10);
                 setRandomSushi();
             }
             // slotting the category
-            for (let _ of [...Array(10)]) {
-                await Timeout(10);
-                setRandomSushi();
-            }
             for (let _ of [...Array(20)]) {
                 await Timeout(10);
                 setRandomSushi(props.sushi.category);
@@ -54,16 +52,30 @@ export const SushiSlot: React.FC<SushiSlotProps> = props => {
     const DrawQuintuple = () => DrawN(5);
     const DrawDecuple = () => DrawN(10);
     const DrawN = (n: number) => {
+        setDelayEnabled(true);
         if (props.sushies.length == 0) {
             setSlots([]);
         } else if (twoStageLottery) {
-            console.log('two-stage');
             const categories = new Set(props.sushies.map(s => s.category));
             setSlots([...Array(n)].map(_ => SelectRandom(Array.from(categories)))
                 .map(c => SelectRandom(props.sushies.filter(s => s.category === c))));
         } else {
-            console.log('single-stage');
             setSlots([...Array(n)].map(_ => SelectRandom(props.sushies)));
+        }
+    };
+
+    const DrawAppendOne = () => {
+        setDelayEnabled(false);
+        if (props.sushies.length == 0) {
+            return;
+        }
+        if (twoStageLottery) {
+            console.log('two-stage');
+            const categories = new Set(props.sushies.map(s => s.category));
+            const category = SelectRandom(Array.from(categories));
+            setSlots([...slots].concat([SelectRandom(props.sushies.filter(s => s.category == category))]));
+        } else {
+            setSlots([...slots].concat([SelectRandom(props.sushies)]));
         }
     };
 
@@ -72,6 +84,7 @@ export const SushiSlot: React.FC<SushiSlotProps> = props => {
 
     const [slots, setSlots] = useState<SushiInfo[]>([]);
     const [twoStageLottery, setTwoStageLottery] = useState<boolean>(true);
+    const [delayEnabled, setDelayEnabled] = useState<boolean>(true);
 
     if (props.sushies.length == 0) {
         return (<p>Loading...</p>);
@@ -89,7 +102,12 @@ export const SushiSlot: React.FC<SushiSlotProps> = props => {
                         </label>
                     </p>
                     {slots.map((m: SushiInfo, i: number) =>
-                        <SushiSingleSlot sushies={props.sushies} sushi={m} delay={i} />)}
+                        <SushiSingleSlot sushies={props.sushies} sushi={m} delay={i} delayEnabled={delayEnabled} />)}
+                    <p>
+                        {
+                            <button onClick={DrawAppendOne}>追加でもう1回引く</button>
+                        }
+                    </p>
                 </div>
             </div>
         );
