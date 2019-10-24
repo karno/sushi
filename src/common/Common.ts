@@ -1,6 +1,8 @@
 import SushiInfo from './SushiInfo';
+import MersenneTwister from 'mersenne-twister';
 
 const MENU_FILE = "sushiro_menu.json";
+const MT_GENERATOR = new MersenneTwister();
 
 export async function FetchSushiInfo(): Promise<SushiInfo[]> {
     const resp = await fetch(MENU_FILE);
@@ -21,5 +23,5 @@ export async function Timeout(msec: number): Promise<void> {
 }
 
 export function SelectRandom<T>(list: T[]): T {
-    return list[Math.floor(Math.random() * list.length)]
+    return list[Math.floor(MT_GENERATOR.random() * list.length)]
 }

@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <!-- external resources -->
+  <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=EB+Garamond:600" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="../reset.css" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+
+  <!-- property -->
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
+  <link rel="index" href="../" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="スシローのメニューをランダムに選べます。" />
+  <link rel="apple-touch-icon" href="logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,20 +34,45 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <title>🍣スシローガチャ🍣 : celestian.io</title>
+</head>
+
+<body>
+  <h1><a href="https://celestian.io">celestian.io</a></h1>
+
+  <h2><a href="#sushiro-machine" id="sushiro-machine">SUSHIRO-MACHINE</a></h2>
+  <div class="document">
+    <h3>🍣スシローガチャ🍣</h3>
+    <p>スシローのメニューをランダムに選べます。出てきたメニューを食べましょう。</p>
+    <p>メニューはスシローWebサイトから定期的に取得していますが、反映が遅れることがあります。</p>
+
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <p id="copyright">&copy; 2019 <a href="https://mstdn.maud.io/@karno">karno</a>,
+    on <a href="https://github.com/karno">github</a>.
+    <a href="./about.html">about this page</a><br />
+    Menu of the Sushi🍣 from <a href="https://www.akindo-sushiro.co.jp/">スシロー (株式会社あきんどスシロー) </a>. <br />
+    このWebページについてスシロー(株式会社あきんどスシロー)様へのお問い合わせはご遠慮ください。</p>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+</body>
+
+<script>window.twttr = (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function (f) {
+      t._e.push(f);
+    };
+
+    return t;
+  }(document, "script", "twitter-wjs"));</script>
+
 </html>

@@ -1,0 +1,233 @@
+body {
+    padding: 1em 8%;
+    background: #FCFAFA;
+    font-family: "Sawarabi Mincho", serif;
+    font-size: 1.2em;
+}
+
+h1 a:link, h1 a:visited,
+h2 a:link, h2 a:visited {
+    color: black;
+    background: none;
+	text-decoration: none;
+}
+
+h1 a:hover, h1 a:active,
+h2 a:hover, h2 a:active {
+	background: rgba(0, 0, 0, 0.1);
+    border-radius: 0.3em;
+}
+
+h1 {
+    margin: 10px 0 15px 0;
+    font-family: "EB Garamond", serif;
+    font-size: 3em;
+    letter-spacing: 0.18em;
+    border: solid #202020;
+    border-width: 0 0 3px 0;
+}
+
+h1 a {
+    display: block;
+    margin: 0 0 20px 0;
+    padding: 20px 40px;
+}
+
+h2 {
+    margin: 20px 0 16px 0;
+    font-family: "EB Garamond", serif;
+    font-size: 1.6em;
+    letter-spacing: 0.15em;
+    border: dotted #202020;
+    border-width: 0 0 1px 0;
+}
+
+h2 a {
+    display: block;
+    margin: 0 0 10px 0;
+    padding: 10px 20px 10px 40px;
+}
+
+h3 {
+    font-family: "Sawarabi Mincho", serif;
+    font-size: middle;
+    letter-spacing: 0.05em;
+}
+
+h4 {
+    padding: 2px;
+    font-family: "Sawarabi Mincho", serif;
+    font-size: middle;
+    font-weight: bold;
+}
+
+.index h1 {
+    margin: 25px 0;
+    font-size: 5em;
+    letter-spacing: 0.2em;
+}
+
+.index h2 {
+    margin: 16px 0;
+    font-size: 2em;
+    letter-spacing: 0.15em;
+}
+
+.content-cards {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 20px;
+}
+
+.content-cards > a {
+    margin: 8px;
+    padding: 12px;
+    display: block;
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    width: 320px;
+}
+
+.content-cards a:link,
+.content-cards a:visited {
+    background: none;
+}
+
+.content-cards a:hover,
+.content-cards a:active {
+    background: rgba(0,0,0, 0.1);
+}
+
+.content-cards h3 {
+    font-family: "EB Garamond", serif;
+    font-size: 1.4em;
+    letter-spacing: 0.05em;
+    line-height: 130%;
+    margin-bottom: 0.2em;
+}
+
+.content-cards p {
+    line-height: 150%;
+}
+
+.document {
+    margin: 24px 35px;
+}
+
+.document > h3 {
+    display: block;
+    margin: 32px 0 24px 0;
+}
+
+.document > p {
+    line-height: 150%;
+    margin-bottom: 0.5em;
+}
+
+.document > ul {
+    margin: 10px 24px;
+    font-size: 0.9em;
+}
+
+.document li {
+    line-height: 2em;
+}
+
+a.blockquote {
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+
+a.blockquote:link,
+a.blockquote:visited {
+    background: none;
+}
+
+a.blockquote:hover,
+a.blockquote:active {
+    background: rgba(0,0,0, 0.05);
+}
+
+blockquote {
+    margin: 16px 0;
+    padding: 0.8em 1em;
+    margin-bottom: 0.5em;
+    font-size: 80%;
+    background: rgba(0,0,0, 0.05);
+    border-radius: 6px;
+    line-height: 150%;
+}
+
+blockquote > h3 {
+    margin: 0 0 3px 0;
+}
+
+cite {
+    color: #484848;
+    font-size: 70%;
+}
+
+.license-notice {
+    padding: 4px;
+    background: #FFF5EE;
+    font-size: 80%;
+    border: 1px dotted #909090;
+    border-radius: 4px;
+    line-height: 150%;
+}
+
+.icon {
+    margin: 2px 4px 2px 2px;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+p#copyright {
+    font-size: 80%;
+    margin: 40px 36px 10px 36px;
+    line-height: 150%;
+    color: #202020;
+}
+
+#back_to_top {
+    top: -100px;
+    right: 10%;
+    height: 30px;
+    width: 8em;
+    padding: 0.5em;
+    background: rgba(240, 240, 240, 0.8);
+    font-size: 80%;
+    position: fixed;
+    border-radius: 10px;
+    border: solid 1px black;
+}
+
+#back_to_top a {
+    display: block;
+    color: #202020;
+    text-decoration: none;
+    position: absolute;
+    bottom: 10px;
+}
+
+input[type="button"] {
+    margin: 16px 0;
+    padding: 4px;
+    font-size: large;
+    background: #fffaf0;
+    border: 1px solid #606060;
+    border-radius: 8px;
+}
+
+input[type="button"]:hover {
+    background: #c0c0c0;
+    border: 1px solid #303030;
+}
+
+input[type="button"]:active {
+    background: #909090;
+    border: 1px solid black;
+}

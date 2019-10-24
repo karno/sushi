@@ -1,22 +1,69 @@
 .App {
+  margin: 1em 0;
+  border: 2px solid #B81B22;
+}
+
+.SushiSlot-Header {
+  background: #B81B22;
+  padding: 1em;
+  color: white;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.SushiSlot-Header button {
+  margin: 0 0.5em;
+}
+
+.SushiStandby {
+  text-align: center;
+  margin: 1em;
+  color: #909090;
+}
+
+.Sushi {
+  margin: 0.5em 1em 1em 1em;
+  height: 2em;
+  border: dotted #303030;
+  border-width: 0 0 2px 0;
+  display: flex;
+  align-items: flex-end;
+  white-space: nowrap;
+}
+
+.SushiCategory {
+  font-size: 90%;
+  padding: 0 1em;
+  width: 8em;
+  text-align: center;
+}
+
+.SushiName {
+  font-size: x-large;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.SushiEnergy {
+  font-size: small;
+  margin-left: 1em;
+}
+
+.SushiPrice {
+  font-size: small;
+  margin-left: 1em;
+}
+
+.SushiSlot-Footer {
+  padding: 1em 0.2em;
+  font-size: medium;
+  text-align: center;
+}
+
+.SushiSlot-Footer button {
+  margin: 0 1em;
 }
 
 .App-header {
-  background-color: white;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: #111111;
-}
-
-.App-link {
-  color: #09d3ac;
+  margin: 1em;
 }

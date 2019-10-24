@@ -36,9 +36,7 @@ const App: React.FC = () => {
   }
   return (
     <div className="App">
-      <header className="App-header">
-        <SushiSlot sushies={menu} />
-      </header>
+      <SushiSlot sushies={menu} />
     </div>
   );
 }
