@@ -23,5 +23,10 @@ export async function Timeout(msec: number): Promise<void> {
 }
 
 export function SelectRandom<T>(list: T[]): T {
-    return list[Math.floor(MT_GENERATOR.random() * list.length)]
+    if (MT_GENERATOR) {
+        return list[Math.floor(MT_GENERATOR.random() * list.length)]
+    } else {
+        // failed reading MT?
+        return list[Math.floor(Math.random() * list.length)]
+    }
 }

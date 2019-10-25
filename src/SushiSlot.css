@@ -1,0 +1,224 @@
+.SushiSlot-Header {
+    background: #B81B22;
+    color: white;
+    text-align: center;
+    padding: 0.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SushiSlot-Header>:first-child {
+    margin: 0.5em;
+}
+
+.SushiSlot-Header .DrawButton {
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+.SushiSlot-Header .DrawButton a {
+    display: block;
+    text-decoration: none;
+    margin: 0.2em;
+    padding: 0.3em;
+    border: 1px solid white;
+    color: white;
+    border-radius: 0.5em;
+}
+
+.SushiSlot-Header .DrawButton a:hover {
+    display: block;
+    background: white;
+    color: #B81B22;
+}
+
+.SushiSlot-Header .DrawButton a:active {
+    display: block;
+    background: white;
+    color: #B81B22;
+}
+
+.SushiSlot-Header button {
+    margin: 0 0.5em;
+}
+
+.SushiSlot-Header input[type=checkbox] {
+    display: none;
+}
+
+.SushiSlot-Header input[type=checkbox]+label {
+    margin: 0.2em;
+    padding: 0.3em;
+    border: 1px solid;
+    border-radius: 0.5em;
+    border-color: transparent;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.SushiSlot-Header input[type=checkbox]+label:before {
+    content: "　";
+}
+
+.SushiSlot-Header input[type=checkbox]:checked+label {
+    background: transparent;
+    color: white;
+}
+
+.SushiSlot-Header input[type=checkbox]:checked+label:before {
+    content: "✓";
+}
+
+.SushiStandby {
+    text-align: center;
+    margin: 1em;
+    color: #909090;
+}
+
+@media (max-width: 600px) {
+    .Sushi {
+        margin: 0.5em 1em 1em 1em;
+        border: dotted #303030;
+        border-width: 0 0 2px 0;
+    }
+    .SushiCategory {
+        font-size: 80%;
+        margin: 0.5em 0;
+    }
+    .SushiName {
+        font-size: large;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .SushiEnergy {
+        display: none;
+    }
+    .SushiPrice {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) {
+    .Sushi {
+        margin: 0.5em 1em 1em 1em;
+        height: 2em;
+        border: dotted #303030;
+        border-width: 0 0 2px 0;
+        display: flex;
+        align-items: flex-end;
+        white-space: nowrap;
+    }
+    .SushiCategory {
+        font-size: 90%;
+        padding: 0 1em;
+        width: 8em;
+        text-align: center;
+    }
+    .SushiName {
+        font-size: x-large;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .SushiEnergy {
+        font-size: small;
+        margin-left: 1em;
+    }
+    .SushiPrice {
+        font-size: small;
+        margin-left: 1em;
+    }
+}
+
+.SushiSlot-Footer {
+    padding: 0.6em 0;
+    margin: 0.2em;
+    font-size: medium;
+    text-align: center;
+    background: rgba(184, 27, 34, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .SushiSlot-Footer {
+        display: block;
+        line-height: 2em;
+    }
+}
+
+.SushiSlot-Footer .Statistics {
+    padding: 0 0.8em;
+    flex-grow: 1;
+}
+
+.SushiSlot-Footer .DrawButton {
+    flex-grow: 1;
+}
+
+.SushiSlot-Footer .DrawButton a {
+    padding: 0.2em 1.8em;
+    text-decoration: none;
+    border: 1px solid #B81B22;
+    color: #B81B22;
+    background: white;
+    border-radius: 0.5em;
+}
+
+@media (max-width: 600px) {
+    .SushiSlot-Footer .DrawButton a {
+        padding: 0.2em 0.5em;
+    }
+}
+
+.SushiSlot-Footer .DrawButton a:hover {
+    background: #B81B22;
+    color: white;
+}
+
+.SushiSlot-Footer .DrawButton a:active {
+    background: #B81B22;
+    color: white;
+}
+
+.SushiSlot-Share {
+    vertical-align: bottom !important;
+    text-align: center;
+}
+
+.SushiSlot-Share a {
+    font-family: sans-serif;
+    font-size: 90%;
+    margin: 0.2em;
+    padding: 0.2em 1em;
+    text-decoration: none;
+    border-radius: 0.5em;
+}
+
+.SushiSlot-Share a.PostTwitter {
+    border: 1px solid #1DA1F2;
+    color: #1DA1F2;
+    background: white;
+}
+
+.SushiSlot-Share a.PostTwitter:hover, .SushiSlot-Share a.PostTwitter:active {
+    color: white;
+    background: #1DA1F2;
+}
+
+.SushiSlot-Share a.PostMastodon {
+    border: 1px solid #06CAD1;
+    color: #06CAD1;
+    background: white;
+}
+
+.SushiSlot-Share a.PostMastodon:hover, .SushiSlot-Share a.PostMastodon:active {
+    color: white;
+    background: #06CAD1;
+}
+
+.SushiSlot-Footer button {
+    margin: 0 1em;
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SushiInfo from './common/SushiInfo';
 import { Timeout, SelectRandom } from './common/Common';
-import { PostTwitter } from './common/Twitter';
+import { PostTwitter, PostMastodon } from './common/Share';
 import './SushiSlot.css';
 
 interface SushiSingleSlotProps {
@@ -55,17 +55,21 @@ const SushiSingleSlot: React.FC<SushiSingleSlotProps> = props => {
         </div>);
 }
 
-interface SushiSlotProps {
+export interface SushiSlotProps {
     sushies: SushiInfo[]
 }
 
 export const SushiSlot: React.FC<SushiSlotProps> = props => {
 
-    const DrawSingle = () => Draw(1);
-    const DrawQuintuple = () => Draw(5);
-    const DrawDecuple = () => Draw(10);
+    const CatchAndDraw = (n: number) => (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        e.stopPropagation();
+        Draw(n);
+    };
 
-    const DrawAppendOne = () => {
+    const DrawAppendOne = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        e.stopPropagation();
         Draw(1, true);
     };
 
@@ -109,14 +113,14 @@ export const SushiSlot: React.FC<SushiSlotProps> = props => {
             <div>
                 <div>
                     <header className="SushiSlot-Header">
-                        ガチャを引く:
-                        <button onClick={DrawSingle}>1皿</button>
-                        <button onClick={DrawQuintuple}>5皿</button>
-                        <button onClick={DrawDecuple}>10皿</button>
-                        <label>
-                            <input type="checkbox" checked={twoStageLottery} onChange={LotteryModeChanged} />
-                            二段階抽選
-                        </label>
+                        <div><p>ガチャを引く:</p></div>
+                        <div className="DrawButton"><a href="#" onClick={CatchAndDraw(1)}>1皿</a></div>
+                        <div className="DrawButton"><a href="#" onClick={CatchAndDraw(5)}>5皿</a></div>
+                        <div className="DrawButton"><a href="#" onClick={CatchAndDraw(10)}>10皿</a></div>
+                        <div>
+                            <input id="two-stage" type="checkbox" checked={twoStageLottery} onChange={LotteryModeChanged} />
+                            <label htmlFor="two-stage">二段階抽選</label>
+                        </div>
                     </header>
                     <div className="SushiSlot-Body">
                         {
@@ -136,16 +140,25 @@ export const SushiSlot: React.FC<SushiSlotProps> = props => {
                         displayFooter
                             ? (
                                 <div className="SushiSlot-Footer">
-                                    <p>
-                                        合計
+                                    <div className="Statistics">
+                                        <p>
+                                            合計
                                         {slots.map(s => s.price).reduce((a, x) => a + x, 0)} 円,
                                         {slots.map(s => s.energy).reduce((a, x) => a + x, 0)} kcal
-                                        <button onClick={DrawAppendOne} >追加でもう1回引く</button>
-                                        <a className="twitter-share-button" href="#" onClick={e => PostTwitter(slots)}>Tweet</a>
-                                    </p>
+                                        </p>
+                                    </div>
+
+                                    <div className="DrawButton">
+                                        <a href="#" onClick={DrawAppendOne}>もう1皿引く</a>
+                                    </div>
+                                    <div className="SushiSlot-Share">
+                                        <a className="PostTwitter" href="#" onClick={e => PostTwitter(slots)}> ツイート </a>
+                                        <a className="PostMastodon" href="#" onClick={e => PostMastodon(slots)}> トゥート </a>
+                                    </div>
                                 </div>
                             )
-                            : <div />}
+                            : <div />
+                    }
                 </div >
             </div >
         );

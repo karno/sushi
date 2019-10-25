@@ -14,9 +14,8 @@ const strByteLen = (s: string): number => s.split('')
         ? 1 : 2)
     .reduce((x, y) => x + y, 0);
 
-export function PostTwitter(sushies: SushiInfo[]) {
-    if (sushies.length == 0) return;
-
+export function BuildShareText(sushies: SushiInfo[]): string {
+    if (sushies.length == 0) return "";
     const preamble = "🍣スシローガチャ🍣";
 
     const totalPrice = sushies.map(s => s.price).reduce((x, y) => x + y, 0);
@@ -24,21 +23,41 @@ export function PostTwitter(sushies: SushiInfo[]) {
     const total = `合計 ${totalPrice}円, ${totalEnergy}kcal`;
     const postamble = `${SOURCE_URL} #${HASHTAG}`;
 
-    let commitSushi = "";
+    let commitSushi = preamble;
     for (let i = 0; i < sushies.length; ++i) {
         const remain = sushies.length - i - 1;
         const ellipsis = remain > 0 ? `ほか ${remain}皿` : "";
         const sushiName = `・${sushies[i].name} `;
-        const s = [preamble, commitSushi, sushiName, total, ellipsis, postamble];
+        const s = [commitSushi, sushiName, total, ellipsis, postamble];
         if (strByteLen(s.join("\n")) >= TWITTER_MAX) {
             commitSushi += '\n' + ellipsis;
             break;
         }
         commitSushi += '\n' + sushiName;
     }
-    window.open("https://twitter.com/intent/tweet?" + [
-        "text=" + encodeURIComponent([preamble, commitSushi, total, ""].join("\n")),
+    return commitSushi + "\n" + total;
+}
+
+export function PostTwitter(sushies: SushiInfo[]) {
+    if (sushies.length == 0) return;
+
+    const url = "https://twitter.com/intent/tweet?" + [
+        "text=" + encodeURIComponent(BuildShareText(sushies)),
         "url=" + encodeURIComponent(SOURCE_URL),
         "hashtags=" + encodeURIComponent(HASHTAG)
-    ].join("&"));
+    ].join("&");
+    if (window.open(url) === null) {
+        window.location.href = url;
+    }
+}
+
+export function PostMastodon(sushies: SushiInfo[]) {
+    if (sushies.length == 0) return;
+
+    const text = [BuildShareText(sushies), "#" + HASHTAG].join(" ");
+    const url = "https://mastoshare.net/post.php?text=" + encodeURIComponent(text);
+    if (window.open(url) === null) {
+        window.location.href = url;
+    }
+
 }
