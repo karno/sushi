@@ -2,18 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Sushi } from './Sushi';
 import { SushiSlot } from './SushiSlot';
 import { FetchSushiInfo } from './common/Common';
-import logo from './logo.svg';
+import SushiInfo from './common/SushiInfo';
 import './App.css';
 
-interface SushiInfo {
-  category: string;
-  name: string;
-  price: number;
-  energy: number;
-  link: string;
-  id: number;
-  cat_id: number;
-}
 
 const App: React.FC = () => {
   const [menu, setMenu] = useState<SushiInfo[] | undefined>(undefined);

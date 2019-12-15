@@ -6,6 +6,7 @@ export interface SushiInfo {
     link: string;
     id: number;
     cat_id: number;
+    alcoholic: boolean;
 }
 
 export default SushiInfo;

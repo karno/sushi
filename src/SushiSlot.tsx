@@ -76,17 +76,18 @@ export const SushiSlot: React.FC<SushiSlotProps> = props => {
     const Draw = (n: number, append: boolean = false) => {
         setDelayEnabled(!append);
         setDisplayFooter(false);
-        if (props.sushies.length == 0) {
+        const candidates = props.sushies.filter(s => alcoholic || !s.alcoholic);
+        if (candidates.length == 0) {
             if (!append) {
                 setSlots([]);
             }
         } else if (twoStageLottery) {
-            const categories = new Set(props.sushies.map(s => s.category));
+            const categories = new Set(candidates.map(s => s.category));
             const news = [...Array(n)].map(_ => SelectRandom(Array.from(categories)))
-                .map(c => SelectRandom(props.sushies.filter(s => s.category === c)));
+                .map(c => SelectRandom(candidates.filter(s => s.category === c)));
             setSlots(append ? [...slots].concat(news) : news);
         } else {
-            const news = [...Array(n)].map(_ => SelectRandom(props.sushies));
+            const news = [...Array(n)].map(_ => SelectRandom(candidates));
             setSlots(append ? [...slots].concat(news) : news);
         }
     };
@@ -101,8 +102,12 @@ export const SushiSlot: React.FC<SushiSlotProps> = props => {
     const LotteryModeChanged = (e: React.ChangeEvent<HTMLInputElement>) =>
         setTwoStageLottery(e.target.checked);
 
+    const AlcoholicChanged = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setAlcoholic(e.target.checked);
+
     const [slots, setSlots] = useState<SushiInfo[]>([]);
     const [twoStageLottery, setTwoStageLottery] = useState<boolean>(true);
+    const [alcoholic, setAlcoholic] = useState<boolean>(true);
     const [delayEnabled, setDelayEnabled] = useState<boolean>(true);
     const [displayFooter, setDisplayFooter] = useState<boolean>(false);
 
@@ -117,9 +122,15 @@ export const SushiSlot: React.FC<SushiSlotProps> = props => {
                         <div className="DrawButton"><a href="#" onClick={CatchAndDraw(1)}>1皿</a></div>
                         <div className="DrawButton"><a href="#" onClick={CatchAndDraw(5)}>5皿</a></div>
                         <div className="DrawButton"><a href="#" onClick={CatchAndDraw(10)}>10皿</a></div>
-                        <div>
-                            <input id="two-stage" type="checkbox" checked={twoStageLottery} onChange={LotteryModeChanged} />
-                            <label htmlFor="two-stage">二段階抽選</label>
+                        <div className="LotteryOption">
+                            <div>
+                                <input id="two-stage" type="checkbox" checked={twoStageLottery} onChange={LotteryModeChanged} />
+                                <label htmlFor="two-stage">二段階抽選</label>
+                            </div>
+                            <div>
+                                <input id="alcoholic" type="checkbox" checked={alcoholic} onChange={AlcoholicChanged} />
+                                <label htmlFor="alcoholic">アルコール</label>
+                            </div>
                         </div>
                     </header>
                     <div className="SushiSlot-Body">
